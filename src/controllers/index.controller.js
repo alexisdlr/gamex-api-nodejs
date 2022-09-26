@@ -1,6 +1,4 @@
-import {pool} from '../db.js'
 
 export const index = async (req, res ) => {
-  const [result] = await pool.query('select * from productos')
-  await res.json(result)
+  res.send('Bienvenido a la api de GameX. Rutas: /api/clients, /api/products')
 }

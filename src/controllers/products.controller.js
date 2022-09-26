@@ -7,11 +7,10 @@ export const getProducts = async (req, res) => {
 
 export const getProduct = async (req, res) => {
   const [result] = await pool.query('select * from productos where id = ?', req.params.id)
-  if(result === []) {
-    res.send('no se encontro ningun resultado')
-    console.log('hola')
-    return
-  }
+  if(result.length <= 0) return res.status(404).json({
+    message: 'not found'
+  })
+
   console.log(result)
   res.json(result)
 }
